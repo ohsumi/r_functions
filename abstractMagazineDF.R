@@ -1,7 +1,6 @@
 abstractMagazineDF <- function(client, IdDF, DFdata){
     
     abstractDF <- function(df){
-        
         df <- as.data.frame(df)
         # remove sampleID.
         # "subset" variable is a dataframe without sampleID.
