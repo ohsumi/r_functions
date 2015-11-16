@@ -113,7 +113,8 @@ abstractNewsPaperDF <- function(name, IdDF, NPdata, DFdata){
                  DF[,c(1,special)])))
                
     }
-    client <- DFdata$client # cp
+    
+    client <- DFdata$client
     #new version.
     indexes <- getIndex(as.character(client), name)
     if(length(indexes) == 0){

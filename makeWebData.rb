@@ -1,10 +1,15 @@
 
 ARGF.each do |line|
   id, name, url, other = line.split("\t")
+  # an irregular processing.
+  if /(.*)(http.*)/.match(name) then
+    # get the company name and remove useless white spaces.
+    name = $1.strip
+  end
+  # main
   if name.include?("_") && name.include?("/") then
-    # include both "_" and "/"
-    print id 
-    print ","
+    # include both "_" and "/".
+    print id + ','
     splited = name.split("/")
     # print all splited string.
     splited.each {|value|
@@ -12,8 +17,7 @@ ARGF.each do |line|
         i =  value.index("_")
         print value[0, i] + "," + value[i+1, value.length]
       else
-        print value
-        print ","
+        print value + ','
       end
     }
     print ",\n"
@@ -27,8 +31,8 @@ ARGF.each do |line|
     print id + ","
     i = name.index("/")
     print name[0, i] + "," + name[i+1, name.length] + ",\n"
-  else 
+  else
     # include neither "_" nor "/"
-    print id + "," + name + ",\n"
+    print id + "," + name.chomp + ",\n"
   end
 end
